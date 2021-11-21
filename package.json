@@ -1,5 +1,5 @@
 {
-  "name": "lpulive-chat",
+  "name": "lpu-wifi-login",
   "version": "1.0.0",
   "description": "An Electron App for LPU WIFI LOGIN as Web Application",
   "main": "main.js",
@@ -44,7 +44,7 @@
   },
   "build": {
     "appId": "com.github.bravo68web.lpu-wifi-login",
-    "productName": "LPU Live Chat",
+    "productName": "LPU WIFI LOGIN",
     "mac": {
       "identity": null,
       "icon": "icons/generated/icons/mac/icon.icns"

@@ -17,7 +17,7 @@ function createWindow() {
 
   // and load the index.html of the app.
   mainWindow.maximize();
-  mainWindow.loadURL("https://lpulive.lpu.in/");
+  mainWindow.loadURL("http://10.10.0.1/");
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
