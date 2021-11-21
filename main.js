@@ -2,6 +2,8 @@
 const { app, BrowserWindow, Menu, shell, dialog } = require("electron");
 const path = require("path");
 const config = require("./package.json");
+const wifi = require("node-wifi");
+var ping = require("ping");
 
 function createWindow() {
   // Create the browser window.
@@ -20,14 +22,59 @@ function createWindow() {
   mainWindow.loadURL("http://10.10.0.1/");
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+}
+
+function createWindow2() {
+  // Create the browser window.
+  const mainWindow = new BrowserWindow({
+    width: "100%",
+    height: "100%",
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+    },
+    icon: "/icons/generated/icons/win/icon.ico",
+    name: "LPU Wifi Login Portal",
+  });
+
+  // and load the index.html of the app.
+  mainWindow.maximize();
+
+  mainWindow.loadFile("offline.html");
+
+  // Open the DevTools.
+  // mainWindow.webContents.openDevTools();
 }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  createWindow();
+  wifi.init({
+    iface: null, // network interface, choose a random wifi interface if set to null
+  });
+
+  // Scan networks
+  wifi.getCurrentConnections((error, currentConnections) => {
+    if (error) {
+      console.log(error);
+    } else {
+      if (/LPU*/.test(currentConnections[0].bssid)) {
+        var hosts = ["10.10.0.1"];
+
+        hosts.forEach(function (host) {
+          ping.promise.probe(host).then(function (res) {
+            if (res.alive) {
+              createWindow();
+            } else {
+              createWindow2();
+            }
+          });
+        });
+      } else {
+        createWindow2();
+      }
+    }
+  });
   // createMenu();
   const menuItemps = [
     {
