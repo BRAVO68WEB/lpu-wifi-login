@@ -13,7 +13,10 @@ or
 yarn add webpack --dev
 ~~~
 
-### Usage: `yarn start`
+### Usage: 
+~~~
+yarn start
+~~~
 
 ## License
 All Softwares mentioned here are licensed by their respective owners. This Repository is licensed under the [MIT License](LICENSE).
