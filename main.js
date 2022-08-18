@@ -19,7 +19,7 @@ function createWindow() {
 
   // and load the index.html of the app.
   mainWindow.maximize();
-  mainWindow.loadURL("http://10.10.0.1/");
+  mainWindow.loadURL("http://internet.lpu.in/");
 
   // Open the DevTools.
 }
