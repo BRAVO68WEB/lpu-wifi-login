@@ -44,7 +44,7 @@
     "electron-builder": "^22.10.5",
     "electron-devtools-installer": "^3.1.1",
     "electron-icon-maker": "0.0.5",
-    "xo": "^0.40.3"
+    "xo": "^0.53.1"
   },
   "build": {
     "appId": "com.github.bravo68web.lpu-wifi-login",
